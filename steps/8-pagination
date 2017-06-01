@@ -1,0 +1,8 @@
+search.addWidget(instantsearch.widgets.pagination({
+	container: '#pagination',
+	labels: {
+		previous: '‹ Previous',
+		next: 'Next ›'
+	},
+	showFirstLast: false
+}));

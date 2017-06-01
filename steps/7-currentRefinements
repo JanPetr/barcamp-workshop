@@ -1,0 +1,4 @@
+search.addWidget(instantsearch.widgets.currentRefinedValues({
+	container: '#current-refined-values',
+	clearAll: 'before'
+}));

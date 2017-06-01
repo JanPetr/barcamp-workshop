@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Marvel Super-Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+    <link rel="shortcut icon" href="./favicon.ico">
+</head>
+
+<body>
+
+<header class="l-header">
+    <a href="./" class="header--home">
+        <img src="./css/img/logo-marvel.svg" class="header--logo" alt="Home logo"/>
+    </a>
+    <div class="header--input-wrapper">
+        <input type="text" class="header--input" id="q"/>
+    </div>
+    <div class="header--infos">
+        <div id="current-refined-values" class="header--current-refined-values"></div>
+        <div id="stats" class="header--stats"></div>
+    </div>
+    <a href="https://www.algolia.com/" class="header--algolia">
+        <img src="./css/img/logo-algolia.svg" class="header--algolia-logo" alt="Algolia logo"/>
+    </a>
+</header>
+
+<div class="l-container js-container">
+    <aside class="l-sidebar">
+        <div id="clear-all"></div>
+        <section class="facet-wrapper">
+            <h3 class="facet--title">Teams</h3>
+            <div id="teams" class="facet"></div>
+            <h3 class="facet--title">Powers</h3>
+            <div id="powers" class="facet"></div>
+            <h3 class="facet--title">Species</h3>
+            <div id="species" class="facet"></div>
+            <h3 class="facet--title">Authors</h3>
+            <div id="authors" class="facet"></div>
+        </section>
+        <hr>
+        <div class="thank-you">
+            <p>Data from <a href="https://en.wikipedia.org/">Wikipedia</a> and the <a
+                    href="http://developer.marvel.com/">Marvel API</a>.</p>
+        </div>
+    </aside>
+
+    <div class="l-results">
+        <div class="hits" id="hits"></div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <div class="l-profile js-profile"></div>
+</div>
+
+<script id="hitTemplate" language="x-template">
+    {{#thumbnail}}
+    <style>
+        .hit__{{uuid}}.hit .hit--thumbnail:before {
+                          background-image: url({{thumbnail}});
+                      }
+    </style>
+    {{/thumbnail}}
+
+    {{#background}}
+    <style>
+        .hit__{{uuid}}.hit .hit--content {
+                          background-image: url({{background}});
+                      }
+    </style>
+    {{/background}}
+
+    <article class="hit hit__{{uuid}}">
+        <div class="hit--thumbnail"></div>
+
+        <div class="hit--content">
+            <h3 class="hit--title">{{{highlightedName}}}</h3>
+
+            <div class="hit--description">
+                {{#highlightedDescription}}
+                <p>{{{highlightedDescription}}}</p>
+                {{/highlightedDescription}}
+
+                {{#isMatchingInNotDisplayedAttributes}}
+                <ul class="hit--matching">
+                    {{#matchingAttributes}}
+                    <li>{{label}}: {{{value}}}</li>
+                    {{/matchingAttributes}}
+                </ul>
+                {{/isMatchingInNotDisplayedAttributes}}
+            </div>
+        </div>
+    </article>
+</script>
+
+<script src="https://cdn.jsdelivr.net/g/lodash@4.11.1,jquery@2.2.1,instantsearch.js@1.4.4,hogan.js@3.0.2"></script>
+<script src="./js/utils.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
+

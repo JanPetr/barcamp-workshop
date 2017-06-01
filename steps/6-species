@@ -1,0 +1,7 @@
+search.addWidget(instantsearch.widgets.refinementList({
+	container: '#species',
+	attributeName: 'species',
+	operator: 'or',
+	limit: 10,
+	sortBy: ['isRefined', 'count:desc', 'name:asc']
+}));

@@ -1,0 +1,3 @@
+search.addWidget(instantsearch.widgets.stats({
+	container: '#stats'
+}));

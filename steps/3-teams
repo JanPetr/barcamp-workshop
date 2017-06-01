@@ -1,0 +1,10 @@
+search.addWidget(instantsearch.widgets.refinementList({
+	container: '#teams',
+	attributeName: 'teams',
+	operator: 'and',
+	limit: 10,
+	sortBy: ['isRefined', 'count:desc', 'name:asc'],
+	showMore: {
+		limit: 20
+	}
+}));
